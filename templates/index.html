@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hot Finds</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>NASA: Latest Mars News</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Find Latest News!</a></p>
+    </div>
+
+    <!-- Top NASA News -->
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="heading">{{mars.headline}}</h4>
+        <small>{{mars.paragraph}}</small>
+      </div>
+    </div>
+    
+    <div>
+      <img src="{{mars.featured_image_url}}">
+    </div>
+
+    <div>
+      {{mars.marsfacts}}
+    </div>
+
+    <!-- <div>
+      {% for image in mars.hemispheres %}
+        <li><img src="{{ image.image_url }}" ali="{{ image.title }}"></li>
+      {% endfor %}
+    </div> -->
+  </div>
+</body>
+
+</html>
+
