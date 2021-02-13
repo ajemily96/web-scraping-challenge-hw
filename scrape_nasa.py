@@ -5,12 +5,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
-    executable_path = {"executable_path": ChromeDriverManager().install()}
+    executable_path = {"executable_path":"chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=False)
 
 
 def scrape():
     browser = init_browser()
+    # executable_path = {"executable_path": ChromeDriverManager().install()}
+    # browser = Browser("chrome", **executable_path, headless=False)
+
     mars = {}
 
     # Mars News
@@ -36,7 +39,7 @@ def scrape():
 
     featured_image_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/' + image_url
 
-    mars['FeaturedImg'].append(featured_image_url)
+    mars['featured_image'] = featured_image_url
 
     # Mars Facts
     url = "https://space-facts.com/mars/"
@@ -46,7 +49,7 @@ def scrape():
 
     html_table = marsfacts.to_html()
     
-    mars['MarsFacts'].append(html_table)
+    mars['mars_facts'] = html_table
 
     # Mars Hemispheres
 
@@ -74,7 +77,7 @@ def scrape():
         
         hemi_img.append({'img_url': img_dl.a["href"],'title': metadata.find('h2', class_='title').text})
     
-    mars['hemispheres'].append(hemi_img)
+    mars['hemispheres'] = hemi_img
 
     browser.quit()
 
